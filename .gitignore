@@ -1,0 +1,25 @@
+node_modules/
+data/
+*.log
+.DS_Store
+Thumbs.db
+
+# 本地数据库与运行时产物
+*.db
+*.db-shm
+*.db-wal
+
+# 协议端本体（体积大，且带登录凭据，不进仓库）
+protocol/
+llbot/
+lagrange/*
+!lagrange/onebot-reverse-ws.json
+
+docs/qr.png
+docs/*.png
+start-llbot.cmd
+
+# 临时/构建产物
+hello-cpp/
+tools/
+.tmp-*

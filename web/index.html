@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QQ 人格机 · 管理面板</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo">Q</div>
+          <div class="brand-text">
+            <strong>QQ 人格机</strong>
+            <span>persona bot</span>
+          </div>
+        </div>
+
+        <nav class="nav" id="nav">
+          <button class="nav-item nav-main" data-route="main">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3.6l2.5 5.1 5.6.8-4 4 1 5.6-5.1-2.7-5.1 2.7 1-5.6-4-4 5.6-.8Z"/></svg>
+            <span>主对话</span>
+          </button>
+          <button class="nav-item" data-route="personas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+            <span>人格</span>
+          </button>
+          <button class="nav-item" data-route="chats">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l1-4.2A8 8 0 1 1 20 12Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg>
+            <span>其他会话</span>
+          </button>
+          <button class="nav-item" data-route="rules">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2.5"/></svg>
+            <span>触发规则</span>
+          </button>
+          <button class="nav-item" data-route="link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9.5 14.5 14.5 9.5"/><path d="M7.2 11.8 5.6 13.4a3.6 3.6 0 0 0 5.1 5.1l1.6-1.6"/><path d="M16.8 12.2l1.6-1.6a3.6 3.6 0 0 0-5.1-5.1l-1.6 1.6"/></svg>
+            <span>连接</span>
+          </button>
+          <button class="nav-item" data-route="dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></svg>
+            <span>概览</span>
+          </button>
+          <button class="nav-item" data-route="settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2 2 2 0 1 1-4 0 1.7 1.7 0 0 0-2.9-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 4.6 15a2 2 0 1 1 0-4 1.7 1.7 0 0 0 1.2-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 11.5 4a2 2 0 1 1 4 0 1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9 2 2 0 1 1 0 4Z"/></svg>
+            <span>设置</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-foot">
+          <div class="conn-pill" id="conn-pill">
+            <i class="dot"></i><span>未连接</span>
+          </div>
+          <a class="hint" href="https://github.com/DandanLLab/SnowCatQQ" target="_blank" rel="noreferrer">由 SnowCat 提供连接 →</a>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="page-title">主对话</h1>
+            <p id="page-sub" class="muted"></p>
+          </div>
+          <div class="topbar-right" id="topbar-right"></div>
+        </header>
+        <section id="view" class="view"></section>
+      </main>
+    </div>
+
+    <div id="modal-root"></div>
+    <div id="drawer-root"></div>
+    <div id="toast" class="toast"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
