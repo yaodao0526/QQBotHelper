@@ -12,8 +12,7 @@ Thumbs.db
 # 协议端本体（体积大，且带登录凭据，不进仓库）
 protocol/
 llbot/
-lagrange/*
-!lagrange/onebot-reverse-ws.json
+lagrange/
 
 docs/qr.png
 docs/*.png
