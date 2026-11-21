@@ -1,9 +1,0 @@
-{
-  "Type": "ReverseWebSocket",
-  "Host": "127.0.0.1",
-  "Port": 7801,
-  "Suffix": "/onebot",
-  "ReconnectInterval": 5000,
-  "HeartBeatInterval": 5000,
-  "AccessToken": ""
-}
