@@ -9,7 +9,7 @@ export const DEFAULT_SETTINGS = {
   api_base: 'https://api.deepseek.com',
   api_key: '',
   model: 'deepseek-chat',
-  temperature: 1.0,
+  temperature: 0.9,
   max_tokens: 800,
   request_timeout_ms: 60000,
 
@@ -22,13 +22,17 @@ export const DEFAULT_SETTINGS = {
   // —— 对话 ——
   history_turns: 12, // 携带最近多少条历史消息
   split_reply: true,
-  reply_max_parts: 3,
-  mood_enabled: true, // 情绪条：影响说话长短和连发节奏 // 每条回复最多几条气泡（1 = 只回一条）
-  segment_delay_min: 500,
-  segment_delay_max: 1400,
+  reply_max_parts: 2, // 每条回复最多几条气泡（1 = 只回一条）
+  mood_enabled: true, // 情绪条：影响说话长短和连发节奏
+  segment_delay_min: 700,
+  segment_delay_max: 1600,
   plain_text: true, // Markdown 转纯文本
   cooldown_ms: 1200, // 同一会话两次回复的最小间隔
   max_concurrency: 3,
+  reply_settle_ms: 2500, // 连发消息合并的去抖窗口
+  continue_enabled: true, // 自己说完一句后，隔一会儿再补一句把话题往前推
+  continue_chance: 25, // 概率 %
+  continue_delay_ms: 60000, // 隔多久再补
 
   // —— 触发规则 ——
   trigger_private: true,
@@ -41,41 +45,39 @@ export const DEFAULT_SETTINGS = {
 
   // —— 表情包 ——
   sticker_enabled: true, // 允许它发表情包（库里的收藏表情）
-  sticker_chance: 20,
-  sticker_desc_limit: 24,
-  sticker_web_enabled: true,
+  sticker_chance: 20, // 没有明确标记时，额外随机配一张的概率 %
+  sticker_desc_limit: 24, // 提示词里最多列出多少个已知含义的表情包
+  sticker_web_enabled: true, // 允许上网找表情包
   sticker_search_url: 'https://www.bing.com/images/async?q={q}&first=1&count=35&mkt=zh-CN&adlt=strict',
-  reply_settle_ms: 2500,
-  continue_enabled: true, // 自己说完一句后，主动再补一句把话题往前推
-  continue_chance: 45, // 概率 %
-  continue_delay_ms: 45000, // 隔多久再补 // 没有明确标记时，额外随机配一张的概率 %
 
   // —— 主对话 / 主动消息 ——
   main_conversation_id: 0, // 主对话会话 id（0 = 未设定）
   main_unlimited_history: true, // 主对话携带尽量多的历史（按字符预算）
   main_history_char_budget: 24000, // 主对话历史注入的字符上限
   proactive_enabled: true, // 定时主动开口
-  proactive_min_minutes: 20, // 两次主动消息的最小间隔
-  proactive_max_minutes: 60, // 最大间隔
+  proactive_min_minutes: 90, // 两次主动消息的最小间隔
+  proactive_max_minutes: 240, // 最大间隔
   proactive_quiet_start: '00:30', // 安静时段（不主动打扰）
   proactive_quiet_end: '08:30',
-  proactive_idle_minutes: 15, // 对方多久没说话才主动
-  proactive_daily_cap: 8, // 每天最多主动几次（含追问）
+  proactive_idle_minutes: 45, // 对方多久没说话才主动
+  proactive_daily_cap: 5, // 每天最多主动几次（含追问）
   followup_enabled: true, // 发了消息没人回时追问
-  followup_minutes: 12, // 等多久没回就追问
+  followup_minutes: 20, // 等多久没回就追问
   followup_max: 2, // 同一条消息最多追问几次
 
   // —— 识图（可选，需要支持图片输入的模型）——
   vision_enabled: false,
   vision_api_base: '', // 留空则复用主模型 Base URL
   vision_api_key: '', // 留空则复用主模型 Key
-  vision_model: '',
+  vision_model: '', // 例如 qwen-vl-max / glm-4.6v / gpt-4o-mini
+
+  // —— 转交给本机 DSH（可选）——
   dsh_enabled: true,
-  dsh_keywords: 'dsh,harness,小D',
-  dsh_command: '',
-  dsh_timeout_ms: 600000,
+  dsh_keywords: 'dsh,harness',
+  dsh_command: '', // 留空则自动检测本机 dsh CLI
+  dsh_timeout_ms: 240000,
   dsh_cwd: '',
-  dsh_send_mode: 'images', // images = 优先发任务产出的图片；transcript = 发终端截图；both = 两者 // 例如 qwen-vl-max / glm-4.6v / gpt-4o-mini
+  dsh_send_mode: 'images', // images = 优先发任务产出的图片；transcript = 发终端截图
 
   // —— OneBot ——
   onebot_enabled: true,
