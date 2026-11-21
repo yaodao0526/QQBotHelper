@@ -14,7 +14,8 @@ if not exist "%QQEXE%" (
   echo.
   echo [x] SnowCat runtime not found:
   echo     %QQEXE%
-  echo     Please keep the protocol\snowcat folder next to this script.
+  echo     Put the SnowCat shell under protocol\snowcat\ first.
+  echo     See README.md: Deploy from GitHub.
   echo.
   pause
   exit /b 1
